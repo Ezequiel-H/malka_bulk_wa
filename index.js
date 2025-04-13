@@ -126,6 +126,8 @@ app.use("/", async (req, res) => {
 
                                             await whatsappSocket.sendMessage(phone + "@s.whatsapp.net", { text: message });
                                             results.push({ phone, status: 'success' });
+                                            const randomDelay = Math.floor(Math.random() * 1000) + 1000; // Random between 1000 and 2000 ms
+                                            await delay(randomDelay); // Wait random time before sending next message
                                         } catch (error) {
                                             results.push({ phone, status: 'error', error: error.message });
                                         }
@@ -166,6 +168,8 @@ app.use("/", async (req, res) => {
                                     try {
                                         await whatsappSocket.sendMessage(phone + "@s.whatsapp.net", { text: message });
                                         results.push({ phone, status: 'success' });
+                                        const randomDelay = Math.floor(Math.random() * 1000) + 1000; // Random between 1000 and 2000 ms
+                                        await delay(randomDelay); // Wait random time before sending next message
                                     } catch (error) {
                                         results.push({ phone, status: 'error', error: error.message });
                                     }
